@@ -1,0 +1,8 @@
+.MuiBox-root{
+    margin-left: 5rem;
+}
+.MuiToolbar-root{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
