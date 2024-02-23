@@ -13,8 +13,10 @@ import TitleIcon from '@mui/icons-material/Title';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import axios from 'axios'
-
+import { useNavigate } from 'react-router-dom';
 import "./blogForm.css"
+
+
 const actions = [
   { icon: <TitleIcon />, name: 'title'},
   { icon: <PhotoLibraryIcon />, name: 'image' },
@@ -27,6 +29,7 @@ const actions = [
 ];
 
 export default function BasicSpeedDial() {
+  const navigate=useNavigate();
   const [submit , setSubmit]=useState(false)
   const userid=localStorage.getItem("userId")
   const [form,setForm]=useState({
@@ -46,25 +49,22 @@ export default function BasicSpeedDial() {
 
   const handleChange = (e , index) =>{
     console.log(form.type[index]);
-    if(e.target.files){
-      const newURL = URL.createObjectURL(e.target.files[0]);
-      const newArr=[...form.type]
-      newArr[index].image=newURL;
-      setForm(prevForm=>({
-        ...prevForm,
-        type:newArr
-      }))
-    }else if(e.target.name){
+    if(e.target.name){
       const newArr=[...form.type]
       const helloo=newArr[index].value=e.target.value;
-      console.log(helloo);
+      setForm(prevForm => ({
+        ...prevForm,
+        type: newArr
+      }));
     }
 
   }
 
   const handleSubmit= async ()=>{
 const res=await axios.post("http://localhost:2000",form)
-console.log(res);
+if(res.OK){
+  navigate("/BlogList")
+}
   }
 
   console.log(form);
@@ -92,27 +92,26 @@ console.log(res);
       </SpeedDial>
     </Box>
     <form className='Form'>
-      <input type='text' name='title' className='title' placeholder='enter title...' onChange={(e)=>setForm({...form,title:e.target.value,userId:userid})}/>
+      <input type='text' name='title' className='Main_title' placeholder='enter title...' onChange={(e)=>setForm({...form,title:e.target.value,userId:userid})}/>
     {form.type?.map((input, index) => {
       if(input.type === 'title'){
           return(
-        <div className='inputBlock' key={index}>
+        <div className='contentTitleBlock' key={index}>
            <input key={index} type="text" name='text' placeholder="content Title" className='title'onChange={(e) =>handleChange(e , index)}/>
         </div>
           )
       }else if(input.type === 'image'){
           return(
         <div className='inputBlock' key={index}>
-          <input type="file"    alt="Submit" key={index} placeholder="select image file and view it" onChange={(e)=>handleChange(e , index)} />
-          <div className='imgPrev'><img src={input.image} alt='image' style={{width:"600px", height:"350px" , objectFit:'cover'}} key={index} /></div>
+          <input type="text" name="image"   alt="Submit" key={index} placeholder="select image url and view it" onChange={(e)=>handleChange(e , index)} />
+          <div className='imgPrev'><img src={input?.value} alt='image' style={{width:"600px", height:"350px" , objectFit:'cover'}} key={index} /></div>
         </div>)
       }else if(input.type === 'video') {
-        {console.log(input.type)}
           return(
         <div className='inputBlock' key={index}>
            <input key={index} type="text" name='video' placeholder="fill video url to view video" onChange={(e) =>handleChange(e , index)}/>
            <div className='videoPrev'>
-           <CardMedia component="iframe" height={'100%'} src={input.value} alt={input.value} autoPlay controls onError={(e) => console.error("Error loading video", e)} />
+           <CardMedia component="iframe" height={'100%'} src={input?.value} alt={input.value} autoPlay controls onError={(e) => console.error("Error loading video", e)} />
            </div>
         </div>
           )
@@ -124,7 +123,7 @@ console.log(res);
         </div>)
       } else if(input.type === 'embed') {
           return(
-        <div className='inputBlock' key={index}>
+        <div className='urlBlock' key={index}>
           <input key={index} type="url" placeholder="enter url here ..." name='embed' onChange={(e) =>handleChange(e , index)}/>
         </div>
           ) 

@@ -13,7 +13,7 @@ async function createItem(req, res) {
 async function getItems(req, res) {
     const items = await itemsService.getItems();
     console.log(items);
-    res.json(items);
+    res.status(200).json(items);
 }
 
 async function getItemById(req, res) {

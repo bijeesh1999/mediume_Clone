@@ -1,0 +1,79 @@
+.blogContainer{
+    max-width: 1200px;
+    margin:5rem auto;
+    min-height: 100vh;
+
+    .blogList{
+        display: grid;
+        gap: 2rem;
+        .blogs{
+            display: grid;
+            gap: 1rem;
+            cursor: pointer;
+            border: 1px solid gainsboro;
+            .blogTitleHeader{
+                display: flex;
+                align-items: center;
+                .imgPrev{
+                    width: 4rem;
+                    height: 4rem;
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+
+}
+
+
+.singleDataContainer{
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    gap: 1rem;
+    padding: 2rem 0;
+    border-left:1px solid gainsboro ;
+    border-right:1px solid gainsboro ;
+    min-height: 100vh;
+    .title{
+        font-size: 55px;
+        font-weight: 500;
+    }
+
+    .imgPrev{
+        width: 100%;
+        height: 30rem;
+        width: 40rem;
+        margin: auto;
+        border: 1px solid gainsboro;
+        img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    .videoPrev{
+        width: 100%;
+        height: 30rem;
+        width: 40rem;
+        border: 1px solid gainsboro;
+        margin: auto;
+    }
+}
+
+.inputBlock{
+    min-width: 40rem;
+    min-height: 30rem;
+    margin: auto;
+    border: 1px solid gainsboro;
+}
+
+.urlBlock{
+    max-width: 900px;
+    margin: auto;
+}

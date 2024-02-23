@@ -8,7 +8,8 @@ async function createItem(item) {
     const result =  await blog.create({
         title:item.title,
         blog:item.type,
-        userId:item.userId
+        userId:item.userId,
+        approved:false
 
     });
     return result

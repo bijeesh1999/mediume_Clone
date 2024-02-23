@@ -5,8 +5,8 @@ const mongoose=require("mongoose")
 const blogSchema=mongoose.Schema({
     title:String,
     blog:[],
-    userId:String
-
+    userId:String,
+    approved:Boolean
 },{
     timestamps:true
 })

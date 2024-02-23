@@ -19,13 +19,16 @@
     gap: 1rem;
     padding: 10rem 0;
     min-height: 80vh !important;
+    .Main_title{
+        font-size: 70px;
+        border: none;
+        border-bottom: 1px solid gainsboro !important;
+        outline: none;
+    }
     .inputBlock{
         width:900px;
         margin: auto;
         border-bottom: 1px solid rgb(197, 195, 195);
-        .title{
-            font-size: 70px !important;
-        }
         input{
             width: 100%;
             border: none;
@@ -52,6 +55,32 @@
             img{
                 width: 100%;
             }
+        }
+        textarea{
+            outline: none;
+            font-size: 16px;
+        }
+ 
+    }
+    .urlBlock{
+        width: 900px;
+        margin: auto;
+        input{
+            width: 100%;
+            font-size: 14px;
+            outline: none;
+            color: rgb(4, 4, 133);
+        }
+    }
+    .contentTitleBlock{
+        width: 900px;
+        margin: auto;
+        input{
+            width: 100%;
+            font-size:35px ;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid gainsboro !important;
         }
     }
 }
