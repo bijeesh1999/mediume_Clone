@@ -19,7 +19,7 @@ function App() {
         <Route path='/BlogList' element={<BlogList />} />
         <Route path='/singleBlog/:id' element={<SingleBlog />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </BrowserRouter>
   );
 }
